@@ -8,7 +8,10 @@ teams_with_players = {}
 
 
 def clean_data():
-    """Cleans the player data by changing the values of guardians, experience and height properties"""
+    """
+    Cleans the player data by changing the values of guardians, experience and height properties
+    :return: None
+    """
     temp_players_data = copy.deepcopy(constants.PLAYERS)
     for data in temp_players_data:
         player_data = {'name': data['name'], 'guardians': []}
@@ -25,7 +28,10 @@ def clean_data():
 
 
 def balance_teams():
-    """Balances the team by reorganising the players for each time based on experience"""
+    """
+    Balances the team by reorganising the players for each time based on experience
+    :return: None
+    """
     experienced_players = []
     non_experienced_players = []
     for player in players_data:
@@ -43,24 +49,39 @@ def balance_teams():
 
 
 def display_team_names():
-    """Displays all the team names"""
+    """
+    Displays all the team names
+    :return: None
+    """
     [print("{}) {}".format(count+1, team_name)) for count, team_name in enumerate(team_data)]
 
 
 def display_avg_height(team_name):
-    """Displays the average height by taking selected team name as parameter"""
+    """
+    Displays the average height by taking selected team name as parameter
+    :param team_name: string
+    :return: None
+    """
     tot_height = sum([player['height'] for player in teams_with_players[team_name]])
     print("Average height: {}\n".format(tot_height/len(teams_with_players[team_name])))
 
 
 def display_players_on_team(team_name):
-    """Displays all the players under the selected team name"""
+    """
+    Displays all the players under the selected team name
+    :param team_name: string
+    :return: None
+    """
     print("Players on Team:")
     print(", ".join(player_details['name'] for player_details in teams_with_players[team_name]))
 
 
 def display_guardians(team_name):
-    """Displays the guardians list for the selected team name"""
+    """
+    Displays the guardians list for the selected team name
+    :param team_name: string
+    :return: None
+    """
     print("\nGuardians:")
     guardians_list = []
     for player in teams_with_players[team_name]:
@@ -69,7 +90,11 @@ def display_guardians(team_name):
 
 
 def display_players_count(team_name):
-    """Displays the total, experienced and non-experienced player count for selected team name"""
+    """
+    Displays the total, experienced and non-experienced player count for selected team name
+    :param team_name: string
+    :return: None
+    """
     print("Total players: {}".format(len(teams_with_players[team_name])))
     exp_players_count = 0
     non_exp_players_count = 0
@@ -83,7 +108,10 @@ def display_players_count(team_name):
 
 
 def display_team_stats():
-    """Displays all the stats for the teams"""
+    """
+    Displays all the stats for the teams"
+    :return: None
+    """
     display_team_names()
     try:
         selected_team_index = int(input("Enter an option: ")) - 1
@@ -106,7 +134,10 @@ def display_team_stats():
 
 
 def display_menu():
-    """Displays menu for users"""
+    """
+    Displays menu for users
+    :return: None
+    """
     print("""---- MENU----
 Here are your choices:
     1) Display Team Stats
